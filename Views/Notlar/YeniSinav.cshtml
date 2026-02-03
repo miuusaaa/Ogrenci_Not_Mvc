@@ -1,0 +1,89 @@
+﻿@model OgrenciNotMvc.Models.EntityFramework.TBLNOTLAR
+@{
+    ViewBag.Title = "YeniSinav";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="margin-bottom:20px">Yeni Not Ekle</h2>
+
+<form method="post" class="form-group">
+    <div>
+        <label>Öğrenci adı-soyadı</label>
+        @Html.DropDownListFor(m => m.TBLOGRENCILER.OGRENCIID, (List<SelectListItem>)ViewBag.ogr, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:10px">
+        <label>Ders Adı</label>
+        @Html.DropDownListFor(m => m.TBLDERSLER.DERSID, (List<SelectListItem>)ViewBag.drs, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:10px">
+        <label>Sınav 1</label>
+        <input type="text" class="form-control" name="SINAV1" />
+    </div>
+    <div style="margin-top:10px">
+        <label>Sınav 2</label>
+        <input type="text" class="form-control" name="SINAV2" />
+    </div>
+    <div style="margin-top:10px">
+        <label>Sınav 3 </label>
+        <input type="text" class="form-control" name="SINAV3" />
+    </div>
+    <div style="margin-top:10px">
+        <label>Proje</label>
+        <input type="text" class="form-control" name="PROJE" />
+    </div>
+    <div style="margin-top:10px">
+        <label>Ortalama</label>
+        <input type="text" class="form-control" name="ORTALAMA" />
+    </div>
+    <div style="margin-top:10px">
+        <label>Durum</label>
+        <input type="text" class="form-control" name="DURUM" />
+    </div>
+
+    @* Aşağıda 4 farklı dropdownlist kullanımı mevcut.Ancak bunlar veritabanından veri çekmiyor.
+           EK olarak controllerda yapılan değişikliklerin yansıması için
+           rebuild ya da tarayıcıda sayfayı kapatıp tekrar view in browser yapmak gerekir.
+           Viewda ise böyle bir şeye gerek yoktur, sadece refresh yapmap yeterlidir.
+
+        <div style="margin-top:10px">
+            <label style="margin-right: 10px; margin-top: 15px">Şehir Seçimi</label>
+            @Html.DropDownList("Şehirler",
+            new[]
+            {
+                new SelectListItem() {Value = "1",Text = "Ankara"},
+                new SelectListItem() {Value = "2",Text = "Yozgat"},
+                new SelectListItem() {Value = "3",Text = "Çankırı"},
+                new SelectListItem() {Value = "4",Text = "Çorum"}
+            }, "Şehir Seçersen çok dadlı olur...", new { @class = "form-group" })
+        </div>
+
+        <div style="margin-top:10px">
+            <label style="margin-right:25px; margin-top:10px">Film Seçin</label>
+            <select id="FilmTuru" name="Film Türü">
+                <option value="0">Seçiniz</option>
+                <option value="1">Aksiyon</option>
+                <option value="2">Dram</option>
+                <option value="3">Romantik Komedi</option>
+                <option value="4">Bilim Kurgu</option>
+                <option value="4">Animasyon</option>
+            </select>
+        </div>
+
+        <div style="margin-top:10px">
+            <label style="margin-right:23px; margin-top:20px">Ders Seçin</label>
+            @using (Html.BeginForm("CategoryChosen", "Home", FormMethod.Get))
+            {
+                @Html.DropDownList("DersAd")
+            }
+        </div>
+
+        <div style="margin-top:5px">
+            <label style="margin-right:23px; margin-top:10px; margin-bottom :15px">Ders Seçin</label>
+            @Html.DropDownList("DersAd", null, null, new { @class = "form-control" })
+        </div>
+    *@
+
+    <div>
+        <button style="margin-top:20px" class="btn btn-primary">Sınav Ekle</button>
+    </div>
+</form>

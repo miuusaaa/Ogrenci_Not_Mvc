@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="margin-bottom:20px">Hesap Makinesi</h2>
+
+<form class="form-group" method="post">
+    
+    <div>
+         Sayı 1 : <input type="text" name="sayi1" id="sayi1" style="margin-right:10px; margin-left:15px" />
+         Sayı 2 : <input type="text" name="sayi2" id="sayi2" style="margin-left:15px" />
+
+                  <div style="margin-top:20px">
+                      <button class="btn btn-warning" name="islem" value="topla">+</button>
+                      <button class="btn btn-warning" style="margin-left:15px " name="islem" value="cikar">-</button>
+                      <button class="btn btn-warning" style="margin-left:15px" name="islem" value="carp">*</button>
+                      <button class="btn btn-warning" style="margin-left:15px" name="islem" value="bol">/</button>
+                  </div>
+
+                  <div style="margin-top:20px">
+                      Sonuç : @ViewBag.snc
+                      <span style="color:red">@ViewBag.Hata</span>
+                  </div>
+    </div>
+</form>
+
+
+
+
+
