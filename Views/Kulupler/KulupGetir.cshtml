@@ -1,0 +1,62 @@
+﻿@model OgrenciNotMvc.Models.EntityFramework.TBLKULUPLER
+@{
+    ViewBag.Title = "KulupGetir";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Guncelle", "Kulupler", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.KULUPID)
+
+    <div class="form-group">
+        <label>Yeni Kulüp Adı</label>
+    </div>
+    <div>
+        @Html.TextBoxFor(m => m.KULUPAD, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:15px" class="form-group">
+        <label>Yeni Kulüp Kontenjan</label>
+    </div>
+    <div>
+        @Html.TextBoxFor(m => m.KULUPKONTENJAN, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <button type="button" class="btn btn-outline-dark" onclick="GuncelleOnay()">
+            Güncelle
+        </button>
+        <input type="hidden" id="islemInput" />
+    </div>
+}
+
+<div class="modal fade" id="guncelleModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header bg-warning">
+                <h4 class="modal-title">Güncelleme Onayı</h4>
+            </div>
+
+            <div class="modal-body">
+                <p>Bu notu güncellemek istediğine emin misin?</p>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-dismiss="modal">İptal</button>
+                <button class="btn btn-success" onclick="FormuGonder()">Evet, Güncelle</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function GuncelleOnay() {
+        $("#guncelleModal").modal("show");
+    }
+
+    function FormuGonder() {
+        document.getElementById("islemInput").value = "Guncelle";
+        $("form").submit();
+    }
+</script>

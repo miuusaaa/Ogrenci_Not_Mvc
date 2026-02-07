@@ -137,6 +137,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Class1.cs" />
     <Compile Include="Models\EntityFramework\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -601,6 +602,10 @@
     <Content Include="Views\Ogrenci\YeniOgrenci.cshtml" />
     <Content Include="Views\Notlar\YeniSinav.cshtml" />
     <Content Include="Views\HesapMakinesi\Index.cshtml" />
+    <Content Include="Views\Kulupler\KulupGetir.cshtml" />
+    <Content Include="Views\Default\DersGetir.cshtml" />
+    <Content Include="Views\Ogrenci\OgrenciGetir.cshtml" />
+    <Content Include="Views\Notlar\NotGetir.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,108 @@
+﻿@model OgrenciNotMvc.Models.EntityFramework.TBLNOTLAR
+
+@{
+    ViewBag.Title = "NotGetir";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm("NotGetir", "Notlar", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.NOTID)
+
+    <div class="form-group">
+        <label>Yeni Öğrenci Adı</label>
+    </div>
+    <div>
+        @Html.DropDownListFor(m => m.OGRID, (List<SelectListItem>)ViewBag.ogr, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:20px" class="form-group">
+        <label>Yeni Ders Adı</label>
+    </div>
+    <div>
+        @Html.DropDownListFor(m => m.DERSID, (List<SelectListItem>)ViewBag.drs, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:20px" class="form-group">
+        <label>Yeni Sınav 1 Notu</label>
+    </div>
+    <div>
+        @Html.TextBoxFor(m => m.SINAV1, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:20px" class="form-group">
+        <label>Yeni Sınav 2 Notu</label>
+    </div>
+    <div>
+        @Html.TextBoxFor(m => m.SINAV2, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:20px" class="form-group">
+        <label>Yeni Sınav 3 Notu</label>
+    </div>
+    <div>
+        @Html.TextAreaFor(m => m.SINAV3, new { @class = "form-control" })
+    </div>
+
+    <div style="margin-top:20px" class="form-group">
+        <label>Proje</label>
+    </div>
+    <div>
+        @Html.TextAreaFor(m => m.PROJE, new { @class = "form-control" })
+    </div>
+
+    <div style="margin-top:20px" class="form-group">
+        <label>Ortalama</label>
+    </div>
+    <div>
+        @Html.TextAreaFor(m => m.ORTALAMA, new { @class = "form-control", @readonly = "readonly" })
+    </div>
+    <div style="margin-top:20px" class="form-group">
+        <label>Durum : </label>
+    </div>
+    <div>
+        <input type="text" class="form-control"
+               value="@(Model.DURUM == true ? "Geçti" : "Kaldı")" readonly />
+        @Html.HiddenFor(m => m.DURUM)
+    </div>
+    <div style="margin-top:15px">
+        <button type="submit" name="islem" value="Hesapla" class="btn btn-warning">Hesapla</button>
+    </div>
+    <div style="margin-top:15px">
+        <button type="button" class="btn btn-outline-dark" onclick="GuncelleOnay()">
+            Güncelle
+        </button>
+        <input type="hidden" name="islem" id="islemInput" />
+    </div>
+}
+
+<div class="modal fade" id="guncelleModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header bg-warning">
+                <h4 class="modal-title">Güncelleme Onayı</h4>
+            </div>
+
+            <div class="modal-body">
+                <p>Bu notu güncellemek istediğine emin misin?</p>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-dismiss="modal">İptal</button>
+                <button class="btn btn-success" onclick="FormuGonder()">Evet, Güncelle</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function GuncelleOnay() {
+        $("#guncelleModal").modal("show");
+    }
+
+    function FormuGonder() {
+        document.getElementById("islemInput").value = "Guncelle";
+        $("form").submit();
+    }
+</script>
+

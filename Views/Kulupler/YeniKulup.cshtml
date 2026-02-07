@@ -15,7 +15,39 @@
         <input type="text" class="form-control" name="KULUPKONTENJAN" />
     </div>
     <div style="margin-top:25px">
-        <button class="btn btn-block">Kulüp Ekle</button>
+        <button type="button" class="btn btn-block" onclick="EkleOnay()">Kulüp Ekle</button>
     </div>
 </form>
+
+<div class="modal fade" id="ekleModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header bg-warning">
+                <h4 class="modal-title">Ekleme Onayı</h4>
+            </div>
+
+            <div class="modal-body">
+                <p>Bu kulübü eklemek istediğinize emin misin?</p>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-dismiss="modal">İptal</button>
+                <button class="btn btn-success" onclick="FormuGonder()">Evet, Ekle</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function EkleOnay() {
+        $("#ekleModal").modal("show");
+    }
+
+    function FormuGonder() {
+        $("form").submit();
+    }
+</script>
 

@@ -58,9 +58,9 @@ i, span {
 }
 
 #sidebar {
-    min-width: 250px;
-    max-width: 250px;
-    background: #7386D5;
+    min-width: 370px;
+    max-width: 360px;
+    background: #ff0000;
     color: #fff;
     transition: all 0.3s;
 }
@@ -79,9 +79,13 @@ i, span {
     display: block;
 }
 
-#sidebar ul li a {
-    text-align: left;
-}
+    #sidebar ul li a {
+        text-align: left;
+        padding: 18px 15px; /* yükseklik artar */
+        font-size: 2.5em; /* yazý büyür */
+        font-weight: 500;
+        font-family:Harrington;
+    }
 
 #sidebar.active ul li a {
     padding: 20px 10px;
@@ -111,13 +115,21 @@ i, span {
 
 #sidebar .sidebar-header {
     padding: 20px;
-    background: #6d7fcc;
+    background: #00ff21;
+    font-size : 90px;
+    font-family : 'Agency FB'
 }
 
-#sidebar .sidebar-header strong {
-    display: none;
-    font-size: 1.8em;
-}
+    #sidebar .sidebar-header h3 {
+        font-size: 0.4em; 
+        font-weight: 600;
+    }
+
+    #sidebar .sidebar-header strong {
+        display: none;
+        font-size: 2.8em;
+        margin-right: 90px;
+    }
 
 #sidebar ul.components {
     padding: 20px 0;
@@ -125,20 +137,22 @@ i, span {
 }
 
 #sidebar ul li a {
-    padding: 10px;
-    font-size: 1.1em;
+    padding: 30px;
+    font-size: 1.9em;
     display: block;
 }
-#sidebar ul li a:hover {
-    color: #7386D5;
-    background: #fff;
-}
+    #sidebar ul li a:hover {
+        color: #7386D5;
+        background: #00ffe0;
+        margin-left :20px;
+        margin-right: 30px;
+    }
 #sidebar ul li a i {
     margin-right: 10px;
 }
 
 #sidebar ul li.active > a, a[aria-expanded="true"] {
-    color: #fff;
+    color: #47748b;
     background: #6d7fcc;
 }
 
@@ -152,7 +166,7 @@ a[aria-expanded="false"]::before, a[aria-expanded="true"]::before {
     display: block;
     position: absolute;
     right: 20px;
-    font-family: 'Glyphicons Halflings';
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 0.6em;
 }
 a[aria-expanded="true"]::before {
@@ -163,30 +177,47 @@ a[aria-expanded="true"]::before {
 ul ul a {
     font-size: 0.9em !important;
     padding-left: 30px !important;
-    background: #6d7fcc;
+    background: #ddd;
 }
 
 ul.CTAs {
     padding: 20px;
+    margin-top: 60px;
+    font-family: 'Book Antiqua';
 }
 
-ul.CTAs a {
-    text-align: center;
-    font-size: 0.9em !important;
-    display: block;
-    border-radius: 5px;
-    margin-bottom: 5px;
-}
+    ul.CTAs a {
+        text-align: center;
+        font-size: 1.5em !important;
+        display: block;
+        border-radius: 5px;
+        margin-bottom: 5px;
+        padding-left: 50px;
+        text-indent: 40px;
+        font-family: 'Segoe UI', Arial, sans-serif;
+    }
 
 a.download {
     background: #fff;
-    color: #7386D5;
+    color: #ff0000;
 }
 
 a.article, a.article:hover {
     background: #6d7fcc !important;
-    color: #fff !important;
+    color: fuchsia !important;
+    font-size : 40px
 }
+
+#sidebar ul.CTAs li a.article,
+#sidebar ul.CTAs li a.article:hover {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+    font-size : 85px;
+}
+
+#sidebar ul.CTAs a {
+    font-size: 25px !important;
+}
+
 
 
 
@@ -197,7 +228,10 @@ a.article, a.article:hover {
     padding: 20px;
     min-height: 100vh;
     transition: all 0.3s;
-    width :100%
+    width: 100%;
+    background: #ffc300;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size :25px;
 }
 
 

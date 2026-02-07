@@ -56,5 +56,52 @@ namespace OgrenciNotMvc.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        public ActionResult Sil(int id)
+        {
+            try
+            {
+                var ogrenci = db.TBLOGRENCILER.Find(id);
+                db.TBLOGRENCILER.Remove(ogrenci);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            catch (Exception)
+            {
+                TempData["Hata"] = "Bu öğrenci başka kayıtlarda kullanıldığı için silinemez!";
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult OgrenciGetir(int id)
+        {
+            var ogrenci = db.TBLOGRENCILER.Find(id);
+
+
+            List<SelectListItem> degerler = (from i in db.TBLKULUPLER.ToList()
+                                             select new SelectListItem
+                                             {
+                                                 Text = i.KULUPAD,
+                                                 Value = i.KULUPID.ToString()
+                                             }).ToList();
+
+            ViewBag.dgr = degerler;
+
+            return View("OgrenciGetir", ogrenci);
+        }
+
+        public ActionResult Guncelle(TBLOGRENCILER o)
+        {
+            var ogr = db.TBLOGRENCILER.Find(o.OGRENCIID);
+            ogr.OGRFOTO = o.OGRFOTO;
+            ogr.OGRSOYAD = o.OGRSOYAD;
+            ogr.OGRAD = o.OGRAD;
+            ogr.OGRKULUP = o.OGRKULUP;
+            ogr.OGRCINSIYET = o.OGRCINSIYET;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }

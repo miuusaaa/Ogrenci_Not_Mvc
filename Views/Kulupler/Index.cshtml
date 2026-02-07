@@ -9,16 +9,81 @@
     <tr>
         <th>KULÜP ID</th>
         <th>KULÜP ADI</th>
+        <th>KULÜP KONTENJAN</th>
+        <th>İşlemler</th>
     </tr>
     <tbody>
-        @foreach(var klp in Model)
-            {
-                <tr>
-                    <td>@klp.KULUPID</td>
-                    <td>@klp.KULUPAD</td>
-                </tr>
-            }
+        @foreach (var klp in Model)
+        {
+            <tr>
+                <td>@klp.KULUPID</td>
+                <td>@klp.KULUPAD</td>
+                <td>@klp.KULUPKONTENJAN</td>
+                <td>
+                    <a href="javascript:void(0);"
+                       class="btn btn-danger"
+                       onclick="SilOnay(@klp.KULUPID)">
+                        Sil
+                    </a>
+                    <a href="/Kulupler/KulupGetir/@klp.KULUPID" class="btn btn-success">Guncelle</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
 
 <a href="/Kulupler/YeniKulup" class=" btn btn-primary">Yeni Kulüp Kaydı</a>
+
+<div class="modal fade" id="hataModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title">Silme İşlemi Başarısız</h5>
+            </div>
+            <div class="modal-body">
+                <p id="hataMesaj"></p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-dismiss="modal">Tamam</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="silModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-warning">
+                <h4 class="modal-title">Silme Onayı</h4>
+            </div>
+            <div class="modal-body">
+                <p>Bu kulübü silmek istediğine emin misin?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" data-dismiss="modal">İptal</button>
+                <a id="btnSil" class="btn btn-danger">Evet, Sil</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@if (TempData["Hata"] != null)
+{
+    <script>
+        window.onload = function () {
+        var mesaj = @Html.Raw(Json.Encode(TempData["Hata"]));
+        document.getElementById("hataMesaj").innerText = mesaj;
+        $("#hataModal").modal("show");
+        };
+    </script>
+}
+
+<script>
+    function SilOnay(id) {
+        $("#btnSil").attr("href", "/Kulupler/Sil/" + id);
+        $("#silModal").modal("show");
+    }
+</script>
+
